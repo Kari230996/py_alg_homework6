@@ -7,41 +7,36 @@
 '''Python 3.10.1'''
 '''ОС Windows 10 x64'''
 
-'''3.4'''
+'''2 Вариант'''
 
 import sys
 import random
 from size_counter import size_counter
+from collections import Counter
 
 
+N = 100
 
-SIZE = 100
+n = [random.randint(0, 100) for i in range(N)]
 
-n = []
+c = Counter(n)
 
-for i in range(SIZE):
-    random_ = random.randint(0, 99)
-    n.append(random_)
-
-maxi = n[0]
-max_count = n.count(maxi)
-
-for i in n:
-    if n.count(i) > max_count:
-        maxi = i
-        max_count = n.count(i)
+print(c)
+print(f'Наиболее часто встечающийся число: {max(c, key=c.get)}')
 
 
-#print('Число', maxi, 'встречается', max_count, 'раз(а)')
-#print(n)
-
-var_lst = (SIZE, n)
+sum_member = (n, N, c)
 sum_ = 0
-
-for i in var_lst:
+for i in sum_member:
     sum_ += size_counter(i)
 
-print(f'Под переменные задействованно {sum_} байт памяти')
+print(f'В программе задействовано байт памяти: {sum_}')
 
-# Под переменные задействованно 3744 байт памяти
-# В кортеже задействованны переменные типа int и list
+# В программе задействовано байт памяти: 9396
+# 1 список одна переменная инт и коллекция
+
+'''
+type(data)=<class 'list'> sys.getsizeof(data)=920 data=[67, 73, 36, 1, 5, 40, 22, 28, 99, 80, 63, 93, 85, 32, 49, 56, 11, 82, 10, 90, 89, 44, 76, 21, 19, 96, 38, 10, 91, 40, 80, 61, 18, 19, 41, 21, 17, 18, 8, 56, 39, 43, 96, 22, 58, 34, 41, 15, 13, 89, 70, 7, 90, 68, 69, 59, 19, 95, 51, 19, 84, 3, 26, 6, 68, 96, 65, 14, 65, 77, 3, 59, 84, 44, 6, 27, 55, 70, 37, 2, 19, 24, 24, 83, 51, 8, 82, 15, 8, 13, 56, 39, 92, 49, 65, 69, 6, 69, 13, 55]
+type(data)=<class 'int'> sys.getsizeof(data)=28 data=100
+type(data)=<class 'collections.Counter'> sys.getsizeof(data)=2288 data=Counter({19: 5, 56: 3, 96: 3, 8: 3, 13: 3, 69: 3, 6: 3, 65: 3, 40: 2, 22: 2, 80: 2, 49: 2, 82: 2, 10: 2, 90: 2, 89: 2, 44: 2, 21: 2, 18: 2, 41: 2, 39: 2, 15: 2, 70: 2, 68: 2, 59: 2, 51: 2, 84: 2, 3: 2, 55: 2, 24: 2, 67: 1, 73: 1, 36: 1, 1: 1, 5: 1, 28: 1, 99: 1, 63: 1, 93: 1, 85: 1, 32: 1, 11: 1, 76: 1, 38: 1, 91: 1, 61: 1, 17: 1, 43: 1, 58: 1, 34: 1, 7: 1, 95: 1, 26: 1, 14: 1, 77: 1, 27: 1, 37: 1, 2: 1, 83: 1, 92
+'''
